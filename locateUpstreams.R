@@ -1,4 +1,5 @@
 library(Biostrings)
+library(seqinr)
 
 genes <- readDNAStringSet("../NC_000913.3.fasta")
 genome <- readDNAStringSet("../Sequence.fasta")
@@ -79,3 +80,4 @@ for (i in 1:length(genes)) {
 
 tail(upstream_seqs)
 
+write.fasta(as.list(upstream_seqs),names = names(upstream_seqs),file.out = "50nt_upstream.fasta")
