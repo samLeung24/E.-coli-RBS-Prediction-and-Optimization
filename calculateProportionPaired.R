@@ -11,9 +11,11 @@ dir1 <- "../30nt_2nd/"
 dir2 <- "../40nt_2nd/"
 dir3 <- "../50nt_2nd/"
 
-table <- data.frame(matrix(ncol = 8, nrow = length(GeneID)))
-colnames(table) <- c("gene_id","sd_seq","30nt","30nt_proportion_paired",
-                     "40nt","40nt_proportion_paired","50nt","50nt_proportion_paired")
+table <- data.frame(matrix(ncol = 11, nrow = length(GeneID)))
+colnames(table) <- c("gene_id","sd_seq","30nt","30nt_proportion_paired", "30nt_energy",
+                     "40nt","40nt_proportion_paired", "40nt_energy",
+                     "50nt","50nt_proportion_paired", "50nt_energy")
+
 
 
 ### Getting the base-pair status of SD in 2nd structure prediction
@@ -33,21 +35,15 @@ for (i in 1:length(GeneID)) {
   table$`30nt`[i] <- substring(file1[2],first = startpose1, last = endpose1)
   table$`30nt_proportion_paired`[i] <- (sum(strsplit(table$`30nt`[i], "")[[1]] == "(")+
                                           sum(strsplit(table$`30nt`[i], "")[[1]] == ")"))/nchar(table$`30nt`[i])
+  table$`30nt_energy`[i] <- as.numeric(sub(".*\\((.*)\\)", "\\1", file1[2]))
   table$`40nt`[i] <- substring(file2[2],first = startpose2, last = endpose2)
   table$`40nt_proportion_paired`[i] <- (sum(strsplit(table$`40nt`[i], "")[[1]] == "(")+
                                           sum(strsplit(table$`40nt`[i], "")[[1]] == ")"))/nchar(table$`40nt`[i])
+  table$`40nt_energy`[i] <- as.numeric(sub(".*\\((.*)\\)", "\\1", file2[2]))
   table$`50nt`[i] <- substring(file3[2],first = startpose3, last = endpose3)
   table$`50nt_proportion_paired`[i] <- (sum(strsplit(table$`50nt`[i], "")[[1]] == "(")+
                                           sum(strsplit(table$`50nt`[i], "")[[1]] == ")"))/nchar(table$`50nt`[i])
+  table$`50nt_energy`[i] <- as.numeric(sub(".*\\((.*)\\)", "\\1", file3[2]))
 }
 
-paste("The mean proportion of paired SD nucleotides in 30nt-upstreams model is",round(mean(table$`30nt_proportion_paired`),3))
-paste("The mean proportion of paired SD nucleotides in 40nt-upstreams model is",round(mean(table$`40nt_proportion_paired`),3))
-paste("The mean proportion of paired SD nucleotides in 50nt-upstreams model is",round(mean(table$`50nt_proportion_paired`),3))
-
-
 write.csv(table,"proportionPaired.csv")
-
-
-
-
