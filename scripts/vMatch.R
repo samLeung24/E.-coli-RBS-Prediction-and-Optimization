@@ -22,20 +22,20 @@ spacer_length <- rep(NA, length(fasta_sequences))
 for (i in 1:length(fasta_sequences)) {
   seq <- fasta_sequences[i]
   seq_length <- length(seq)
-  
+
   # search for SD sequence in first 20 nucleotides
   sd_matches <- matchPattern(sd_template, substring(seq, 1, 20), max.mismatch = 1, min.mismatch = 0)
-  
+
   # if SD sequence is found
   if (length(sd_matches) > 0) {
     # get start and end positions of SD sequence
     sd_start[i] <- start(sd_matches)[1]
     sd_end[i] <- end(sd_matches)[1]
-    
+
     # define start and end positions of spacer
     spacer_start[i] <- sd_end[i] + 1
     spacer_end[i] <- 20
-    
+
     # calculate spacer length
     spacer_length[i] <- spacer_end[i] - spacer_start[i] + 1
   } else {
@@ -58,4 +58,4 @@ output_df <- data.frame(gene_id = gene_ids,
                         spacer_length = spacer_length)
 
 # write output to csv
-write.csv(output_df, file = "NC_000913.3.csv", row.names = FALSE)
+write.csv(output_df, file = "predictionBiostring.csv", row.names = FALSE)

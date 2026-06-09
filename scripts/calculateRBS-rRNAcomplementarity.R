@@ -1,12 +1,14 @@
 library(Biostrings)
 
-genes <- read.csv("forRF5.csv")
-
-RBS <- DNAStringSet(genes$RBS)
-  RBS <- RNAStringSet(RBS)
-rRNA <- readDNAStringSet("../16S_rRNA.fasta")
+genes <- read.csv("forRF7.csv")
+readRBS <- DNAStringSet(genes$RBS)
+  RBS <- RNAStringSet(readRBS)
+Genome <- readDNAStringSet("../MG1655_complete_genome.fasta")
+  rRNA_start <- 4166659
+  rRNA_end <- 4168200
+  rRNA <- Genome[[1]][rRNA_start:rRNA_end]
   rRNA <- RNAStringSet(rRNA)
-  
+
 calculate_complementarity <- function(seq1,seq2,start,end) {
   ## Check for input validity
   if (!is(seq1, "RNAString") || !is(seq2, "RNAString")) {
@@ -34,4 +36,4 @@ for (i in 1:length(genes[,1])) {
 
 genes$Complim <- scores
 
-write.csv(genes,row.names = FALSE,file = "forRF5.csv")
+write.csv(genes,row.names = FALSE,file = "forRF8.csv")

@@ -64,7 +64,3 @@ model <- lm(abundance ~ sd_length, data = tab_merged)
 plot(tab_merged$sd_length,y=tab_merged$abundance)
 abline(model)
 summary(model)
-
-
-
-

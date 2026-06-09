@@ -31,7 +31,7 @@ for (i in 1:length(GeneID)) {
   endpose1 <- 10+SDends[i]
   endpose2 <- 20+SDends[i]
   endpose3 <- 30+SDends[i]
-  
+
   table$`30nt`[i] <- substring(file1[2],first = startpose1, last = endpose1)
   table$`30nt_proportion_paired`[i] <- (sum(strsplit(table$`30nt`[i], "")[[1]] == "(")+
                                           sum(strsplit(table$`30nt`[i], "")[[1]] == ")"))/nchar(table$`30nt`[i])

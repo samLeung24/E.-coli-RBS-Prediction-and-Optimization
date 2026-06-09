@@ -25,7 +25,7 @@ for (i in 1:length(GeneID)) {
   file1 <- readLines(paste0(dir1,GeneID[i],"|",Locus[i],".fold"), n = 2)
   file2 <- readLines(paste0(dir2,GeneID[i],"|",Locus[i],".fold"), n = 2)
   file3 <- readLines(paste0(dir3,GeneID[i],"|",Locus[i],".fold"), n = 2)
-  
+
   tablen$`30nt_energy`[i] <- as.numeric(sub(".*\\((.*)\\)", "\\1", file1[2]))
   tablen$`40nt_energy`[i] <- as.numeric(sub(".*\\((.*)\\)", "\\1", file2[2]))
   tablen$`50nt_energy`[i] <- as.numeric(sub(".*\\((.*)\\)", "\\1", file3[2]))

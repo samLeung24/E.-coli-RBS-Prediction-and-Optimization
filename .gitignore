@@ -1,0 +1,61 @@
+# macOS
+.DS_Store
+
+# R / RStudio local state
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.RDataTmp
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+nohup.out
+
+# Large/raw biological inputs and generated intermediates
+*.csv
+*.tsv
+*.txt
+*.fasta
+*.fa
+*.fna
+*.gff
+*.gff3
+*.gb
+*.gbk
+*.ct
+*.dbn
+*.fold
+*.predict
+*.ps
+*.gz
+
+# Generated figures/reports/model artifacts
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.html
+*.rds
+*.Rds
+*.RData
+
+# Keep repository scaffolding tracked.
+!data/
+!data/raw/
+!data/raw/README.md
+!data/processed/
+!data/processed/README.md
+!results/
+!results/figures/
+!results/figures/README.md
+!results/tables/
+!results/tables/README.md
+!docs/
+!docs/*.md
+
+# Project documentation may include text files if deliberately added later.
+!README.md

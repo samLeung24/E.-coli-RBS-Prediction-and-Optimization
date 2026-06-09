@@ -1,0 +1,21 @@
+Package: EcoliRBSPredictionOptimization
+Title: E. coli RBS Prediction and Optimization Analysis
+Version: 0.1.0
+Authors@R:
+    person(given = "Sam", family = "Leung", role = c("aut", "cre"))
+Description: Historical analysis scripts for ribosome binding site prediction,
+    upstream sequence extraction, RNA secondary-structure analysis, and
+    exploratory modeling in Escherichia coli K-12 MG1655.
+License: file LICENSE
+Encoding: UTF-8
+Imports:
+    Biostrings,
+    cluster,
+    dplyr,
+    ggplot2,
+    ggseqlogo,
+    gridExtra,
+    seqinr,
+    seqLogo,
+    stringr,
+    tidyverse

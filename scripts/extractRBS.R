@@ -17,4 +17,3 @@ for (j in 1:length(upstream)) {
 
 
 write.fasta(as.list(sample),names = names(sample),file.out = "40nt_upstream_30nt_ORF.fasta")
-

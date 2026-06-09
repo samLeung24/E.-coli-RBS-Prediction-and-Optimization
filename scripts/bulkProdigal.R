@@ -45,7 +45,7 @@ for (i in seq(nrow(merged_table))) {
   # Get the RBS and sd_seq for this row
   rbs <- merged_table[i, "RBS"]
   sd_seq <- merged_table[i, "sd_seq"]
-  
+
   # If sd_seq is "None", set spacer_start, spacer_end, and spacer_seq to NA
   if (sd_seq == "None") {
     merged_table[i, "spacer_start"] <- NA
@@ -55,14 +55,14 @@ for (i in seq(nrow(merged_table))) {
     # Find the start and end positions of the sd_seq within the RBS
     sd_start <- regexpr(sd_seq, rbs)[1]
     sd_end <- sd_start + attr(regexpr(sd_seq, rbs), "match.length") - 1
-    
+
     # Calculate the start and end positions of the spacer
     spacer_start <- sd_end + 1
     spacer_end <- nchar(rbs)
-    
+
     # Extract the spacer sequence
     spacer_seq <- substr(rbs, spacer_start, spacer_end)
-    
+
     # Update the merged table with the spacer start, end, and sequence
     merged_table[i, "spacer_start"] <- spacer_start
     merged_table[i, "spacer_end"] <- spacer_end

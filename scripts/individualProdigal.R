@@ -16,7 +16,7 @@ for (i in 1:length(csv_files)) {
   file_parts <- strsplit(file_name, "|", fixed = TRUE)[[1]]
   gene_id <- file_parts[1]
   locus_name <- file_parts[2]
-  
+
   # If the individual table has no rows, fill NAs and continue to the next file
   if (file.info(csv_files[i])$size == 0) {
     individual_table <- data.frame(matrix(NA, nrow = 1, ncol = ncol(merged_table)))
@@ -35,7 +35,7 @@ for (i in 1:length(csv_files)) {
 }
 
 final_table <- merged_table[-1,-16]
-final_table <- final_table %>% 
+final_table <- final_table %>%
   arrange(as.numeric(gene_id))
 
 final_table[final_table == "None"] <- NA
